@@ -1,4 +1,4 @@
-*neovim-set-path* Augment :find and friends
+*neovim-set-path-help* Augment :find and friends
 
 Author:  Florian Beeres <yuuki@protonmail.com>
 Repo:    https://github.com/cidem/neovim-set-path
