@@ -1,0 +1,35 @@
+*neovim-set-path* Augment :find and friends
+
+Author:  Florian Beeres <yuuki@protonmail.com>
+Repo:    https://github.com/cidem/neovim-set-path
+License: MIT <https://opensource.org/licenses/MIT>
+
+============================================================================
+INTRODUCTION                               *neovim-set-path*
+
+This plugin adds the directories of all `git ls-files` to the buffer-only
+'path'. This let's you use the built-in `:find` command to project-wide fuzzy
+finding without having to pull in extensive plugins that come with their own
+UI.
+
+FUNCTIONALITY                              *neovim-set-path-functions*
+
+                                           *pathutils#SetPath*
+Vimscript function that wraps the Lua code. This is the main entry point. Use
+it through an autocommand, or as a custom command, like this: >
+
+    augroup SetPath
+        autocmd!
+        autocmd BufEnter,DirChanged * call pathutils#SetPath()
+    augroup END
+    command! -nargs=0 UpdatePath :call pathutils#SetPath()
+
+<
+
+                                           *set_path()*
+Lua function that is called by the Vimscript wrapper above: >
+
+        require("path-utils").set_path()
+
+ vim:tw=78:et:ft=help:norl:
+
