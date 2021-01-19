@@ -8,7 +8,7 @@ function module.set_path()
     local result = string.gsub(handle:read("*a"), "\n", "")
 
     if result ~= "" then
-      local files_handle = io.popen("git ls-files " .. result .. " | xargs dirname " .. result)
+      local files_handle = io.popen("git ls-files " .. result .. " | xargs dirname | sort | uniq")
       local files_result = files_handle:read("*a")
 
       -- Create a list of all directories fd found
