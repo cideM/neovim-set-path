@@ -2,7 +2,7 @@ local module = {}
 
 -- Inspired by https://github.com/Guergeiro/clean-path.vim/blob/master/plugin/clean-path.vim
 function module.set_path()
-    local files_handle = io.popen("git ls-files | xargs dirname 2> /dev/null")
+    local files_handle = io.popen("git ls-files 2> /dev/null | xargs dirname 2> /dev/null")
     local files_result = files_handle:read("*a")
 
     -- Create a list of all directories fd found
